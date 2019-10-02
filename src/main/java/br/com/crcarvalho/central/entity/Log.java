@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Log {
@@ -20,6 +21,9 @@ public class Log {
 	private String source;
 	private boolean filed = false;
 	private LocalDateTime createdAt;
+	
+	@ManyToOne
+	private User user;
 
 	public Long getId() {
 		return id;
@@ -83,6 +87,14 @@ public class Log {
 
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

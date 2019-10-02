@@ -1,12 +1,15 @@
 package br.com.crcarvalho.central.entity;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,6 +29,9 @@ public class User implements UserDetails {
 	private String password;
 
 	private String name;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Log> logs = new ArrayList<>();
 
 	public Long getId() {
 		return id;
