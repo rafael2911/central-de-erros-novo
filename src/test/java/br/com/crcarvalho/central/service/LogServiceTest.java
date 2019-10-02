@@ -46,6 +46,7 @@ public class LogServiceTest {
 		log.setSource("localhost");
 		log.setCreatedAt(LocalDateTime.now());
 		
+		when(logRepository.findById(1L)).thenReturn(Optional.empty());
 	}
 	
 	@Test
@@ -90,6 +91,39 @@ public class LogServiceTest {
 		expectedException.expectMessage("Log não encontrado para o id " + 1L);
 		
 		logService.findById(1L);
+	}
+	
+	@Test
+	public void shouldRemoveLogById() {
+		when(logRepository.findById(1L)).thenReturn(Optional.of(log));
+		logService.toRemove(1L);
+		
+		verify(logRepository).delete(log);
+	}
+	
+	@Test
+	public void mustReturnExceptionToRemoveLogNotFound() {
+		expectedException.expect(LogNotFoundException.class);
+		expectedException.expectMessage("Log não encontrado para o id " + 1L);
+		
+		logService.toRemove(1L);
+	}
+	
+	@Test
+	public void mustArchiveLogById() {
+		when(logRepository.findById(1L)).thenReturn(Optional.of(log));
+		Log logChanged = logService.toFile(1L);
+		
+		verify(logRepository).findById(1L);
+		assertThat(logChanged.isFiled()).isTrue();
+	}
+	
+	@Test
+	public void mustReturnExceptionToFileLogNotFound() {
+		expectedException.expect(LogNotFoundException.class);
+		expectedException.expectMessage("Log não encontrado para o id " + 1L);
+		
+		logService.toFile(1L);
 	}
 	
 }

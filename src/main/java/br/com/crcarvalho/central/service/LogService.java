@@ -12,4 +12,8 @@ public interface LogService {
 
 	Log findById(Long id);
 
+	void toRemove(Long id);
+
+	Log toFile(Long id);
+
 }

@@ -18,6 +18,7 @@ public class Log {
 	private String title;
 	private String details;
 	private String source;
+	private boolean filed = false;
 	private LocalDateTime createdAt;
 
 	public Long getId() {
@@ -66,6 +67,14 @@ public class Log {
 
 	public void setSource(String source) {
 		this.source = source;
+	}
+
+	public boolean isFiled() {
+		return filed;
+	}
+
+	public void setFiled(boolean filed) {
+		this.filed = filed;
 	}
 
 	public LocalDateTime getCreatedAt() {

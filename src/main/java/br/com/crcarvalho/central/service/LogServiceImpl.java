@@ -32,4 +32,18 @@ public class LogServiceImpl implements LogService {
 		return logRepository.findById(id).orElseThrow(() -> new LogNotFoundException("Log não encontrado para o id " + id));
 	}
 
+	@Override
+	public void toRemove(Long id) {
+		
+		logRepository.delete(findById(id));
+	}
+
+	@Override
+	public Log toFile(Long id) {
+		Log log = findById(id);
+		log.setFiled(true);
+		
+		return log;
+	}
+
 }
