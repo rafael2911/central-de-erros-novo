@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import br.com.crcarvalho.central.CentralDeErrosNovoApplicationTests;
 import br.com.crcarvalho.central.entity.Log;
+import br.com.crcarvalho.central.repository.filtro.LogFilter;
 
 @DataJpaTest
 public class LogRepositoryTest extends CentralDeErrosNovoApplicationTests {
@@ -61,7 +62,7 @@ public class LogRepositoryTest extends CentralDeErrosNovoApplicationTests {
 		
 		logRepository.save(log);
 		
-		assertThat(log.getId()).isEqualTo(3L);
+		assertThat(log.getId()).isEqualTo(8L);
 	}
 	
 	@Test
@@ -80,6 +81,58 @@ public class LogRepositoryTest extends CentralDeErrosNovoApplicationTests {
 		
 		Log logAlterado = logRepository.findById(1L).get();
 		assertThat(logAlterado.isFiled()).isTrue();
+	}
+	
+	@Test
+	public void mustFilterByEnvironmentAndLevel() {
+		LogFilter filter = new LogFilter();
+		filter.setEnvironment("test");
+		filter.setSearchFor("level");
+		filter.setValue("error");
+		
+		List<Log> logs = logRepository.filterOut(filter);
+		
+		assertThat(logs.size()).isEqualTo(3);
+	}
+	
+	@Test
+	public void musFilterByDescription() {
+		LogFilter filter = new LogFilter();
+		filter.setEnvironment("test");
+		filter.setSearchFor("title");
+		filter.setValue("Titulo");
+		
+		List<Log> logs = logRepository.filterOut(filter);
+		
+		assertThat(logs.size()).isEqualTo(2);
+	}
+	
+	@Test
+	public void mustFilterBySource() {
+		LogFilter filter = new LogFilter();
+		filter.setEnvironment("producao");
+		filter.setSearchFor("source");
+		filter.setValue("localhost");
+		
+		List<Log> logs = logRepository.filterOut(filter);
+		
+		assertThat(logs.size()).isEqualTo(2);
+	}
+	
+	@Test
+	public void sortingFilteringTest() {
+		LogFilter filter = new LogFilter();
+		filter.setEnvironment("test");
+		filter.setSearchFor("source");
+		filter.setValue("localhost");
+		filter.setOrderBy("title");
+		
+		List<Log> logs = logRepository.filterOut(filter);
+		
+		logs.forEach(l -> System.out.println(l.getTitle()));
+		
+		assertThat(logs.size()).isEqualTo(4);
+		assertThat(logs.get(0).getId()).isEqualTo(6L);
 	}
 	
 }
