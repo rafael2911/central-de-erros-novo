@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -44,7 +43,6 @@ public class LogServiceTest {
 		log.setEnvironment("dev");
 		log.setLevel("error");
 		log.setSource("localhost");
-		log.setCreatedAt(LocalDateTime.now());
 		
 		when(logRepository.findById(1L)).thenReturn(Optional.empty());
 	}

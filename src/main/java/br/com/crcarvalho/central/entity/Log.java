@@ -20,7 +20,7 @@ public class Log {
 	private String details;
 	private String source;
 	private boolean filed = false;
-	private LocalDateTime createdAt;
+	private LocalDateTime createdAt = LocalDateTime.now();
 	
 	@ManyToOne
 	private User user;
@@ -83,10 +83,6 @@ public class Log {
 
 	public LocalDateTime getCreatedAt() {
 		return createdAt;
-	}
-
-	public void setCreatedAt(LocalDateTime createdAt) {
-		this.createdAt = createdAt;
 	}
 
 	public User getUser() {
