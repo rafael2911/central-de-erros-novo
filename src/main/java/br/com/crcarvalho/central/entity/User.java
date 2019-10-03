@@ -1,5 +1,6 @@
 package br.com.crcarvalho.central.entity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -29,6 +30,8 @@ public class User implements UserDetails {
 	private String password;
 
 	private String name;
+	
+	private LocalDateTime createdAt;
 	
 	@OneToMany(mappedBy = "user")
 	private List<Log> logs = new ArrayList<>();
@@ -63,6 +66,22 @@ public class User implements UserDetails {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public List<Log> getLogs() {
+		return logs;
+	}
+
+	public void setLogs(List<Log> logs) {
+		this.logs = logs;
 	}
 
 	@Override
