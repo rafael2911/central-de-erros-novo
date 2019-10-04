@@ -1,5 +1,7 @@
 package br.com.crcarvalho.central.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -42,7 +44,8 @@ public class LogServiceImpl implements LogService {
 		
 		logRepository.delete(findById(id));
 	}
-
+	
+	@Transactional
 	@Override
 	public Log toFile(Long id) {
 		Log log = findById(id);
