@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,12 @@ public class LogController {
 	@ResponseBody
 	public Page<Log> listar(@PageableDefault(page = 0, size = 10) Pageable paginacao) {
 		return this.logService.findAll(paginacao);
+	}
+	
+	@GetMapping("{id}")
+	public Log getLog(@PathVariable("id") Long id) {
+		
+		return this.logService.findById(id);
 	}
 	
 }
