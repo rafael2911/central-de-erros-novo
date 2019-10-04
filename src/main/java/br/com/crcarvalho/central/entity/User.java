@@ -16,6 +16,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User implements UserDetails {
 
@@ -31,9 +34,11 @@ public class User implements UserDetails {
 
 	private String name;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime createdAt;
 	
 	@OneToMany(mappedBy = "user")
+	@JsonIgnore
 	private List<Log> logs = new ArrayList<>();
 
 	public Long getId() {

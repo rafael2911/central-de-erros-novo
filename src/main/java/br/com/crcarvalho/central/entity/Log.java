@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Log {
 	
@@ -20,6 +22,8 @@ public class Log {
 	private String details;
 	private String source;
 	private boolean filed = false;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
 	private LocalDateTime createdAt = LocalDateTime.now();
 	
 	@ManyToOne
