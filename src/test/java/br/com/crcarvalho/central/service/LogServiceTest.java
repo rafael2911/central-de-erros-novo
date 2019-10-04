@@ -5,7 +5,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.Before;
@@ -14,6 +13,9 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.crcarvalho.central.entity.Log;
@@ -56,19 +58,20 @@ public class LogServiceTest {
 	
 	@Test
 	public void shouldReturnEmptyListWhenNoLogsAreRegistered() {
-		List<Log> logs = logService.findAll();
+		when(logRepository.findAll(PageRequest.of(0, 10))).thenReturn(new PageImpl<Log>(Arrays.asList()));
+		Page<Log> logs = logService.findAll(PageRequest.of(0, 10));
 		
-		verify(logRepository).findAll();
+		verify(logRepository).findAll(PageRequest.of(0, 10));
 		assertThat(logs.isEmpty()).isTrue();
 	}
 	
 	@Test
 	public void shouldFetchAllLogs() {
-		when(logRepository.findAll()).thenReturn(Arrays.asList(log));
-		List<Log> logs = logService.findAll();
+		when(logRepository.findAll(PageRequest.of(0, 10))).thenReturn(new PageImpl<Log>(Arrays.asList(log)));
+		Page<Log> logs = logService.findAll(PageRequest.of(0, 10));
 		
-		verify(logRepository).findAll();
-		assertThat(logs.size()).isEqualTo(1);
+		verify(logRepository).findAll(PageRequest.of(0, 10));
+		assertThat(logs.getNumberOfElements()).isEqualTo(1);
 	}
 	
 	@Test

@@ -1,15 +1,20 @@
 package br.com.crcarvalho.central.service;
 
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 import br.com.crcarvalho.central.entity.Log;
 import br.com.crcarvalho.central.repository.LogRepository;
 import br.com.crcarvalho.central.service.exception.LogNotFoundException;
 
+@Service
 public class LogServiceImpl implements LogService {
 
 	private LogRepository logRepository;
-
+	
+	@Autowired
 	public LogServiceImpl(LogRepository logRepository) {
 		this.logRepository = logRepository;
 	}
@@ -21,9 +26,9 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
-	public List<Log> findAll() {
+	public Page<Log> findAll(Pageable paginacao) {
 		
-		return logRepository.findAll();
+		return logRepository.findAll(paginacao);
 	}
 
 	@Override

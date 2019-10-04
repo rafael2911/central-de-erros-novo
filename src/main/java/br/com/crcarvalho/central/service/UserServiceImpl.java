@@ -2,6 +2,7 @@ package br.com.crcarvalho.central.service;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
@@ -12,7 +13,8 @@ import br.com.crcarvalho.central.service.exception.DuplicateEmailException;
 public class UserServiceImpl implements UserService {
 
 	private UserRepository userRepository;
-
+	
+	@Autowired
 	public UserServiceImpl(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}

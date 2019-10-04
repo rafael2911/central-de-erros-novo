@@ -24,6 +24,22 @@ public class Log {
 	
 	@ManyToOne
 	private User user;
+	
+	public Log() {
+		
+	}
+
+	public Log(Long id, String environment, String level, String title, String details, String source, User user) {
+		this.id = id;
+		this.environment = environment;
+		this.level = level;
+		this.title = title;
+		this.details = details;
+		this.source = source;
+		this.user = user;
+		this.createdAt = LocalDateTime.now();
+		this.filed = false;
+	}
 
 	public Long getId() {
 		return id;
