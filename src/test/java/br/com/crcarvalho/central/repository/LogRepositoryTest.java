@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -95,52 +97,36 @@ public class LogRepositoryTest extends CentralDeErrosNovoApplicationTests {
 	public void mustFilterByEnvironmentAndLevel() {
 		LogFilter filter = new LogFilter();
 		filter.setEnvironment("test");
-		filter.setSearchFor("level");
-		filter.setValue("error");
+		filter.setLevel("error");
 		
-		List<Log> logs = logRepository.filterOut(filter);
+		Page<Log> logs = logRepository.findLogByEnvironmentAndLevelContaining(
+				filter.getEnvironment(), filter.getLevel(), PageRequest.of(0, 10));
 		
-		assertThat(logs.size()).isEqualTo(3);
+		assertThat(logs.getTotalElements()).isEqualTo(3);
 	}
 	
 	@Test
 	public void musFilterByDescription() {
 		LogFilter filter = new LogFilter();
 		filter.setEnvironment("test");
-		filter.setSearchFor("title");
-		filter.setValue("Titulo");
+		filter.setTitle("Titulo");
 		
-		List<Log> logs = logRepository.filterOut(filter);
+		Page<Log> logs = logRepository.findLogByEnvironmentAndTitleContaining(
+				filter.getEnvironment(), filter.getTitle(), PageRequest.of(0, 10));
 		
-		assertThat(logs.size()).isEqualTo(2);
+		assertThat(logs.getTotalElements()).isEqualTo(2);
 	}
 	
 	@Test
 	public void mustFilterBySource() {
 		LogFilter filter = new LogFilter();
 		filter.setEnvironment("producao");
-		filter.setSearchFor("source");
-		filter.setValue("localhost");
+		filter.setSource("localhost");
 		
-		List<Log> logs = logRepository.filterOut(filter);
+		Page<Log> logs = logRepository.findLogByEnvironmentAndSourceContaining(
+				filter.getEnvironment(), filter.getSource(), PageRequest.of(0, 10));
 		
-		assertThat(logs.size()).isEqualTo(2);
-	}
-	
-	@Test
-	public void sortingFilteringTest() {
-		LogFilter filter = new LogFilter();
-		filter.setEnvironment("test");
-		filter.setSearchFor("source");
-		filter.setValue("localhost");
-		filter.setOrderBy("title");
-		
-		List<Log> logs = logRepository.filterOut(filter);
-		
-		logs.forEach(l -> System.out.println(l.getTitle()));
-		
-		assertThat(logs.size()).isEqualTo(4);
-		assertThat(logs.get(0).getId()).isEqualTo(6L);
+		assertThat(logs.getTotalElements()).isEqualTo(2);
 	}
 	
 }

@@ -1,11 +1,12 @@
 package br.com.crcarvalho.central.repository.filtro;
 
 public class LogFilter {
-	
+
 	private String environment;
-	private String searchFor;
+	private String level;
+	private String title;
+	private String source;
 	private String orderBy;
-	private String value;
 
 	public String getEnvironment() {
 		return environment;
@@ -15,12 +16,28 @@ public class LogFilter {
 		this.environment = environment;
 	}
 
-	public String getSearchFor() {
-		return searchFor;
+	public String getLevel() {
+		return level;
 	}
 
-	public void setSearchFor(String searchFor) {
-		this.searchFor = searchFor;
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
 	}
 
 	public String getOrderBy() {
@@ -31,12 +48,4 @@ public class LogFilter {
 		this.orderBy = orderBy;
 	}
 
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
-	}
-	
 }

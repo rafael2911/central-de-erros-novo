@@ -20,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.crcarvalho.central.controller.form.LogForm;
 import br.com.crcarvalho.central.entity.Log;
+import br.com.crcarvalho.central.repository.filtro.LogFilter;
 import br.com.crcarvalho.central.service.LogService;
 
 @RestController
@@ -31,7 +32,27 @@ public class LogController {
 	
 	@GetMapping
 	@ResponseBody
-	public Page<Log> listar(@PageableDefault(page = 0, size = 10) Pageable paginacao) {
+	public Page<Log> listar(LogFilter filter, @PageableDefault(page = 0, size = 10) Pageable paginacao) {
+		
+		if(filter.getLevel() != null) {
+			return this.logService.findLogByEnvironmentAndLevelContaining(filter.getEnvironment(),
+					filter.getLevel(), paginacao);
+		}
+		
+		if(filter.getTitle() != null) {
+			return this.logService.findLogByEnvironmentAndTitleContaining(filter.getEnvironment(),
+					filter.getTitle(), paginacao);
+		}
+		
+		if(filter.getSource() != null) {
+			return this.logService.findLogByEnvironmentAndSourceContaining(filter.getEnvironment(),
+					filter.getSource(), paginacao);
+		}
+		
+		if(filter.getEnvironment() != null) {
+			return this.logService.findLogByEnvironment(filter.getEnvironment(), paginacao);
+		}
+
 		return this.logService.findAll(paginacao);
 	}
 	

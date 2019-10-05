@@ -27,9 +27,10 @@ public class User implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
 	private String email;
-
+	
+	@JsonIgnore
 	private String password;
 
 	private String name;
@@ -88,37 +89,43 @@ public class User implements UserDetails {
 	public void setLogs(List<Log> logs) {
 		this.logs = logs;
 	}
-
+	
+	@JsonIgnore
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
 		return Arrays.asList(new SimpleGrantedAuthority("ADMIN"));
 	}
-
+	
+	@JsonIgnore
 	@Override
 	public String getUsername() {
 		
 		return this.email;
 	}
-
+	
+	@JsonIgnore
 	@Override
 	public boolean isAccountNonExpired() {
 		
 		return true;
 	}
-
+	
+	@JsonIgnore
 	@Override
 	public boolean isAccountNonLocked() {
 		
 		return true;
 	}
-
+	
+	@JsonIgnore
 	@Override
 	public boolean isCredentialsNonExpired() {
 		
 		return true;
 	}
-
+	
+	@JsonIgnore
 	@Override
 	public boolean isEnabled() {
 		

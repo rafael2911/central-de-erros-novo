@@ -28,12 +28,6 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
-	public Page<Log> findAll(Pageable paginacao) {
-		
-		return logRepository.findAll(paginacao);
-	}
-
-	@Override
 	public Log findById(Long id) {
 		
 		return logRepository.findById(id).orElseThrow(() -> new LogNotFoundException("Log não encontrado para o id " + id));
@@ -53,5 +47,37 @@ public class LogServiceImpl implements LogService {
 		
 		return log;
 	}
+
+	@Override
+	public Page<Log> findAll(Pageable pageable) {
+		
+		return this.logRepository.findAll(pageable);
+	}
+
+	@Override
+	public Page<Log> findLogByEnvironment(String environment, Pageable pageable) {
+		
+		return this.logRepository.findLogByEnvironment(environment, pageable);
+	}
+
+	@Override
+	public Page<Log> findLogByEnvironmentAndSourceContaining(String environment, String source, Pageable pageable) {
+		
+		return this.logRepository.findLogByEnvironmentAndSourceContaining(environment, source, pageable);
+	}
+
+	@Override
+	public Page<Log> findLogByEnvironmentAndLevelContaining(String environment, String level, Pageable pageable) {
+		
+		return this.logRepository.findLogByEnvironmentAndLevelContaining(environment, level, pageable);
+	}
+
+	@Override
+	public Page<Log> findLogByEnvironmentAndTitleContaining(String environment, String title, Pageable pageable) {
+		
+		return this.logRepository.findLogByEnvironmentAndTitleContaining(environment, title, pageable);
+	}
+
+	
 
 }
