@@ -1,4 +1,4 @@
-INSERT INTO user (email, password, name, created_at) VALUES ('admin@admin.com', '123456', 'admin', now());
+INSERT INTO user (email, password, name, created_at) VALUES ('admin@admin.com', '$2a$10$lOAE44uqqKC6ECy3TvVD4.7/VvrivGeMKOIYCukeM/Yu1jdKkNIyO', 'admin', now());
 INSERT INTO user (email, password, name, created_at) VALUES ('user@user.com', '654321', 'user', now());
 
 INSERT INTO log (details, environment, filed, level, source, user_id, title, created_at)
