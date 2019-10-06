@@ -1,4 +1,4 @@
-package br.com.crcarvalho.central.entity;
+package br.com.codenation.central.entity;
 
 import java.time.LocalDateTime;
 

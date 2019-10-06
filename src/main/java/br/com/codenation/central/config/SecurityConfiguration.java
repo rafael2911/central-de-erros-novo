@@ -1,4 +1,4 @@
-package br.com.crcarvalho.central.config;
+package br.com.codenation.central.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

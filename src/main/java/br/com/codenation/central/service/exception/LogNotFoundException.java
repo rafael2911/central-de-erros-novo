@@ -1,4 +1,4 @@
-package br.com.crcarvalho.central.service.exception;
+package br.com.codenation.central.service.exception;
 
 public class LogNotFoundException extends RuntimeException {
 	

@@ -1,4 +1,4 @@
-package br.com.crcarvalho.central.service;
+package br.com.codenation.central.service;
 
 import javax.transaction.Transactional;
 
@@ -7,9 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.crcarvalho.central.entity.Log;
-import br.com.crcarvalho.central.repository.LogRepository;
-import br.com.crcarvalho.central.service.exception.LogNotFoundException;
+import br.com.codenation.central.entity.Log;
+import br.com.codenation.central.repository.LogRepository;
+import br.com.codenation.central.service.exception.LogNotFoundException;
 
 @Service
 public class LogServiceImpl implements LogService {

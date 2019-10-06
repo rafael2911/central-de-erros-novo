@@ -15,9 +15,11 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import br.com.codenation.central.entity.Log;
+import br.com.codenation.central.repository.LogRepository;
+import br.com.codenation.central.repository.UserRepository;
+import br.com.codenation.central.repository.filtro.LogFilter;
 import br.com.crcarvalho.central.CentralDeErrosNovoApplicationTests;
-import br.com.crcarvalho.central.entity.Log;
-import br.com.crcarvalho.central.repository.filtro.LogFilter;
 
 @Sql(value = "/load-database.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Sql(value = "/clean-database.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)

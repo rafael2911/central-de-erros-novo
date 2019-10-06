@@ -1,10 +1,10 @@
-package br.com.crcarvalho.central.repository;
+package br.com.codenation.central.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.crcarvalho.central.entity.Log;
+import br.com.codenation.central.entity.Log;
 
 public interface LogRepository extends JpaRepository<Log, Long> {
 	

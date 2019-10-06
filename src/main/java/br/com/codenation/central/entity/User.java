@@ -1,4 +1,4 @@
-package br.com.crcarvalho.central.entity;
+package br.com.codenation.central.entity;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -63,7 +64,8 @@ public class User implements UserDetails {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		this.password = bCryptPasswordEncoder.encode(password);
 	}
 
 	public String getName() {

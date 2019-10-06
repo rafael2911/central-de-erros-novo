@@ -14,9 +14,11 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.crcarvalho.central.entity.Log;
-import br.com.crcarvalho.central.repository.LogRepository;
-import br.com.crcarvalho.central.service.exception.LogNotFoundException;
+import br.com.codenation.central.entity.Log;
+import br.com.codenation.central.repository.LogRepository;
+import br.com.codenation.central.service.LogService;
+import br.com.codenation.central.service.LogServiceImpl;
+import br.com.codenation.central.service.exception.LogNotFoundException;
 
 @RunWith(SpringRunner.class)
 public class LogServiceTest {

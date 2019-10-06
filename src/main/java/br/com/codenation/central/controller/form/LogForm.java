@@ -1,6 +1,6 @@
-package br.com.crcarvalho.central.controller.form;
+package br.com.codenation.central.controller.form;
 
-import br.com.crcarvalho.central.entity.Log;
+import br.com.codenation.central.entity.Log;
 
 public class LogForm {
 

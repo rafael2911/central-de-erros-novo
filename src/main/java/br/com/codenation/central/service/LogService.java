@@ -1,9 +1,9 @@
-package br.com.crcarvalho.central.service;
+package br.com.codenation.central.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import br.com.crcarvalho.central.entity.Log;
+import br.com.codenation.central.entity.Log;
 
 public interface LogService {
 

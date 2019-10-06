@@ -16,9 +16,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.crcarvalho.central.entity.User;
-import br.com.crcarvalho.central.repository.UserRepository;
-import br.com.crcarvalho.central.service.exception.DuplicateEmailException;
+import br.com.codenation.central.entity.User;
+import br.com.codenation.central.repository.UserRepository;
+import br.com.codenation.central.service.UserService;
+import br.com.codenation.central.service.UserServiceImpl;
+import br.com.codenation.central.service.exception.DuplicateEmailException;
 
 @RunWith(SpringRunner.class)
 public class UserServiceTest {

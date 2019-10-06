@@ -1,12 +1,12 @@
-package br.com.crcarvalho.central.config;
+package br.com.codenation.central.config;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import br.com.crcarvalho.central.entity.Erro;
-import br.com.crcarvalho.central.service.exception.LogNotFoundException;
+import br.com.codenation.central.entity.Erro;
+import br.com.codenation.central.service.exception.LogNotFoundException;
 
 @ControllerAdvice
 public class ExceptionHandlerConfig {

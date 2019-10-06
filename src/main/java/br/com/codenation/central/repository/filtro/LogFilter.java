@@ -1,4 +1,4 @@
-package br.com.crcarvalho.central.repository.filtro;
+package br.com.codenation.central.repository.filtro;
 
 public class LogFilter {
 

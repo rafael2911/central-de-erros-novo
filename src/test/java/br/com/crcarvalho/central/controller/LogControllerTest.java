@@ -11,9 +11,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import br.com.codenation.central.controller.LogController;
+import br.com.codenation.central.entity.Log;
+import br.com.codenation.central.entity.User;
 import br.com.crcarvalho.central.CentralDeErrosNovoApplicationTests;
-import br.com.crcarvalho.central.entity.Log;
-import br.com.crcarvalho.central.entity.User;
 
 public class LogControllerTest extends CentralDeErrosNovoApplicationTests {
 	

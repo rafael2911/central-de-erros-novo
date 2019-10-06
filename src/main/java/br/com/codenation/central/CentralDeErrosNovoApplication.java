@@ -1,4 +1,4 @@
-package br.com.crcarvalho.central;
+package br.com.codenation.central;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

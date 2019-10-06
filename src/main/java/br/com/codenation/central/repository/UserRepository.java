@@ -1,10 +1,10 @@
-package br.com.crcarvalho.central.repository;
+package br.com.codenation.central.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.crcarvalho.central.entity.User;
+import br.com.codenation.central.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 

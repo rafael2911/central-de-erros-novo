@@ -1,4 +1,4 @@
-package br.com.crcarvalho.central.controller;
+package br.com.codenation.central.controller;
 
 import java.net.URI;
 
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.crcarvalho.central.controller.form.LogForm;
-import br.com.crcarvalho.central.entity.Log;
-import br.com.crcarvalho.central.repository.filtro.LogFilter;
-import br.com.crcarvalho.central.service.LogService;
+import br.com.codenation.central.controller.form.LogForm;
+import br.com.codenation.central.entity.Log;
+import br.com.codenation.central.repository.filtro.LogFilter;
+import br.com.codenation.central.service.LogService;
 
 @RestController
 @RequestMapping("logs")
